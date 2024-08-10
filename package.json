@@ -1,4 +1,9 @@
 {
+  "name": "WhatsTypescript",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc"
+  },
   "devDependencies": {
     "typescript": "^5.5.4"
   },
