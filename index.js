@@ -10,16 +10,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+//getting  form element
 const form = document.getElementById('defineform');
-// const form = document.querySelector('#defineform') as HTMLFormElement;
+//const form = document.querySelector('#defineform') as HTMLFormElement;
+//form submission handler
 form.onsubmit = (event) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
     event.preventDefault();
+    //handling form data
     const formData = new FormData(form);
     const word = formData.get('defineword');
+    //fetching data from api
     try {
         const response = yield fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
         const data = yield response.json();
+        //extracting and displaying the definition
         const definition = ((_c = (_b = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.meanings[0]) === null || _b === void 0 ? void 0 : _b.definitions[0]) === null || _c === void 0 ? void 0 : _c.definition) || 'Definition not found.';
         const definitionElement = document.getElementById('definition');
         if (definitionElement) {
